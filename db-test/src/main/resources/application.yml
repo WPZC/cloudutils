@@ -1,0 +1,4 @@
+thread:
+  threadPoolExecutor:
+    corePoolSize: 10
+    maximumPoolSize: 5

@@ -17,6 +17,11 @@
             <artifactId>jpa-template</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.cloudalibaba</groupId>
+            <artifactId>common-region</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 
