@@ -77,7 +77,7 @@ public abstract class ThreadFactory {
                 r-> new Thread(r,"普通线程池-"+r.hashCode()),
                 //拒绝策略
                 new ThreadPoolExecutor.AbortPolicy());
-        log.info("THREAD_POOL_EXECUTOR初始化完成,corePoolSize"+corePoolSize+",maximumPoolSize"+maximumPoolSize+",keepAliveTime"+keepAliveTime);
+        log.info("THREAD_POOL_EXECUTOR初始化完成,corePoolSize-"+corePoolSize+",maximumPoolSize-"+maximumPoolSize+",keepAliveTime-"+keepAliveTime);
 
         //初始化定时线程池
         param = properties.getProperty("thread.scheduledThreadPoolExecutor.corePoolSize");
@@ -92,7 +92,7 @@ public abstract class ThreadFactory {
                 r-> new Thread(r,"定时线程池-"+r.hashCode()),
                 //拒绝策略
                 new ThreadPoolExecutor.AbortPolicy());
-        log.info("SCHEDULED_EXECUTOR_SERVICE初始化完成,corePoolSize"+corePoolSize);
+        log.info("SCHEDULED_EXECUTOR_SERVICE初始化完成,corePoolSize-"+corePoolSize);
     }
 
     /**

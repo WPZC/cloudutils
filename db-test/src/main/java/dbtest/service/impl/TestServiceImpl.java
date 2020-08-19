@@ -6,8 +6,12 @@ import com.sun.xml.bind.v2.model.core.ID;
 import dbtest.dao.TestJpa;
 import dbtest.entity.Test;
 import dbtest.service.TestService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,9 +33,24 @@ public class TestServiceImpl extends BaseService<Test, TestJpa> implements TestS
         super(testJpa);
     }
 
+    @Override
     public List<Test> findByAll(){
 
         return k().findAll();
+
+    }
+
+    @Override
+    public void findByPage() {
+
+        HashMap<String,List<Object>> map = new HashMap<>();
+        List<Object> list = new ArrayList<>();
+        list.add("2");
+        map.put("field3",list);
+        Specification<Test> specification = createSpecification(map,"eq");
+        Page<Test> page = findPages(1,5,specification);
+
+        System.out.println(page.getTotalElements());
 
     }
 }

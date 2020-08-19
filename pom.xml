@@ -10,6 +10,7 @@
         <module>securitypermission</module>
         <module>gateway</module>
         <module>db-test</module>
+        <module>redis-template</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -13,4 +13,6 @@ public interface TestService {
 
     List<Test> findByAll();
 
+    void findByPage();
+
 }

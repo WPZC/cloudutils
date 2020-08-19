@@ -94,20 +94,20 @@ public abstract class BaseService<T extends BaseDoMain,K extends BaseDao>{
      * @param maps
      * @return
      */
-    private Specification<T> createSpecification(HashMap<String, List<Object>> maps) {
-        return new Specification<T>() {
+    public Specification<T> createSpecification(HashMap<String, List<Object>> maps,String symbol) {
+
+        Specification<T> specification = new Specification<T>() {
             @Override
             public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-
                 List<Predicate> predicates = new ArrayList<>();
                 //循环map记性验证
                 for (String key:maps.keySet()){
                     if(null!=maps.get(key)){
                         List<Object> objects = maps.get(key);
                         //符号
-                        String symbol  = (String) objects.get(0);
+                        //String symbol  = (String) objects.get(0);
                         //取出后移除第一个
-                        objects.remove(0);
+                        //objects.remove(0);
                         switch (symbol){
                             case "eq":
                                 //等于
@@ -150,8 +150,13 @@ public abstract class BaseService<T extends BaseDoMain,K extends BaseDao>{
                         }
                     }
                 }
+                System.out.println("predicates:"+predicates.size());
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };
+
+        return specification;
     }
+
+
 }
